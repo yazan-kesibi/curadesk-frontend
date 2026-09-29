@@ -1,0 +1,422 @@
+@use 'variables' as *;
+
+// ==========================================================================
+// الأزرار
+// ==========================================================================
+.btn-primary,
+.btn-secondary,
+.btn-danger,
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-xs;
+  padding: $space-sm $space-md;
+  border-radius: $radius;
+  font-weight: 600;
+  font-size: 14px;
+  border: 1px solid transparent;
+  transition: opacity 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+  white-space: nowrap;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.btn-primary {
+  background-color: $color-accent;
+  color: white;
+
+  &:hover:not(:disabled) {
+    opacity: 0.9;
+  }
+}
+
+.btn-secondary {
+  background-color: $color-surface;
+  color: $color-text;
+  border-color: $color-border;
+
+  &:hover:not(:disabled) {
+    background-color: $color-bg;
+  }
+}
+
+.btn-danger {
+  background-color: $color-danger;
+  color: white;
+
+  &:hover:not(:disabled) {
+    opacity: 0.9;
+  }
+}
+
+.btn-ghost {
+  background: none;
+  color: $color-text-muted;
+
+  &:hover:not(:disabled) {
+    background-color: $color-bg;
+    color: $color-text;
+  }
+}
+
+// ==========================================================================
+// رأس الصفحة (عنوان + عدّاد + إجراءات) — مستخدم بكل صفحات القوائم
+// ==========================================================================
+@mixin page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: $space-md;
+  margin-bottom: $space-lg;
+  flex-wrap: wrap;
+
+  h1 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+}
+
+@mixin page-header-actions {
+  display: flex;
+  align-items: center;
+  gap: $space-md;
+  flex-wrap: wrap;
+}
+
+.page-count {
+  font-size: 13px;
+  color: $color-text-muted;
+}
+
+// ==========================================================================
+// صناديق الإجراءات على كل صف/بطاقة (تعديل/حذف)
+// ==========================================================================
+.row-actions {
+  display: flex;
+  gap: $space-xs;
+
+  button {
+    color: $color-text-muted;
+    padding: 6px;
+    border-radius: $radius-sm;
+    transition: background-color 0.15s ease, color 0.15s ease;
+
+    &:hover {
+      background-color: $color-bg;
+      color: $color-text;
+    }
+
+    &.row-actions__danger:hover {
+      background-color: color-mix(in srgb, $color-danger 12%, transparent);
+      color: $color-danger;
+    }
+  }
+}
+
+// ==========================================================================
+// رسائل الخطأ
+// ==========================================================================
+.error-text {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  color: $color-danger;
+  background-color: color-mix(in srgb, $color-danger 8%, transparent);
+  border: 1px solid color-mix(in srgb, $color-danger 25%, transparent);
+  border-radius: $radius;
+  padding: $space-md;
+  font-size: 14px;
+}
+
+// ==========================================================================
+// صندوق البحث
+// ==========================================================================
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: $space-xs;
+  background-color: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius;
+  padding: $space-xs $space-sm;
+  color: $color-text-muted;
+  width: 220px;
+  transition: border-color 0.15s ease;
+
+  &:focus-within {
+    border-color: $color-accent;
+  }
+
+  input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+    color: $color-text;
+    font-family: inherit;
+  }
+}
+
+// ==========================================================================
+// الحالة الفارغة
+// ==========================================================================
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: $space-xl * 2 $space-lg;
+  color: $color-text-muted;
+  background-color: $color-surface;
+  border: 1px dashed $color-border;
+  border-radius: $radius;
+
+  svg {
+    opacity: 0.4;
+    margin-bottom: $space-md;
+    color: $color-accent;
+  }
+
+  h3 {
+    color: $color-text;
+    font-size: 16px;
+    margin-bottom: $space-xs;
+  }
+
+  p {
+    font-size: 14px;
+    margin-bottom: $space-md;
+  }
+}
+
+// ==========================================================================
+// شارات الحالة (عام) — الصفحات يلي عندها ألوان خاصة (مواعيد/فواتير) بتعمل
+// extend/override إضافي، هاي بس القاعدة البصرية المشتركة
+// ==========================================================================
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+
+  // حالات المواعيد
+  &.status--scheduled {
+    background-color: $color-accent-soft;
+    color: $color-accent;
+  }
+  &.status--completed {
+    background-color: color-mix(in srgb, $color-success 12%, transparent);
+    color: $color-success;
+  }
+  &.status--cancelled {
+    background-color: color-mix(in srgb, $color-danger 12%, transparent);
+    color: $color-danger;
+  }
+  &.status--no-show {
+    background-color: color-mix(in srgb, $color-warning 12%, transparent);
+    color: $color-warning;
+  }
+
+  // حالات الفواتير
+  &.status--pending {
+    background-color: color-mix(in srgb, $color-warning 12%, transparent);
+    color: $color-warning;
+  }
+  &.status--partial {
+    background-color: $color-accent-soft;
+    color: $color-accent;
+  }
+  &.status--paid {
+    background-color: color-mix(in srgb, $color-success 12%, transparent);
+    color: $color-success;
+  }
+}
+
+// ==========================================================================
+// حالات التحميل (Skeleton)
+// ==========================================================================
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+
+.skeleton {
+  background-color: $color-border;
+  border-radius: $radius-sm;
+  animation: skeleton-pulse 1.4s ease-in-out infinite;
+}
+
+.skeleton-list {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+}
+
+.skeleton-row {
+  height: 56px;
+  border-radius: $radius;
+}
+
+// ==========================================================================
+// ترقيم الصفحات (Pagination)
+// ==========================================================================
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-xs;
+  margin-top: $space-lg;
+
+  button {
+    min-width: 34px;
+    height: 34px;
+    border-radius: $radius-sm;
+    color: $color-text-muted;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 0 $space-xs;
+    transition: background-color 0.15s ease, color 0.15s ease;
+
+    &:hover:not(:disabled) {
+      background-color: $color-bg;
+      color: $color-text;
+    }
+
+    &:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    &.active {
+      background-color: $color-accent;
+      color: white;
+    }
+  }
+
+  &__ellipsis {
+    color: $color-text-muted;
+    padding: 0 4px;
+  }
+}
+
+// ==========================================================================
+// خط أساسي للأفاتار (تُستخدم بعدة صفحات: مرضى، إشعارات...)
+// ==========================================================================
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: $color-accent;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.avatar--sm {
+  width: 26px;
+  height: 26px;
+  font-size: 12px;
+}
+
+.avatar--lg {
+  width: 56px;
+  height: 56px;
+  font-size: 22px;
+}
+
+// ==========================================================================
+// مجموعة أزرار تبديل (فلتر الوقت، فلتر القراءة...) — مستخدمة بعدة صفحات
+// ==========================================================================
+.filter-toggle {
+  display: flex;
+  background-color: $color-bg;
+  border: 1px solid $color-border;
+  border-radius: $radius;
+  padding: 2px;
+  flex-wrap: wrap;
+
+  button {
+    padding: $space-xs $space-md;
+    font-size: 13px;
+    font-weight: 600;
+    color: $color-text-muted;
+    border-radius: calc(#{$radius} - 4px);
+    white-space: nowrap;
+    transition: background-color 0.15s ease, color 0.15s ease;
+
+    &.active {
+      background-color: $color-surface;
+      color: $color-accent;
+      box-shadow: $shadow-sm;
+    }
+  }
+}
+
+// ==========================================================================
+// قائمة فلتر منسدلة (حالة الموعد/الفاتورة...)
+// ==========================================================================
+.status-filter-select {
+  border: 1px solid $color-border;
+  border-radius: $radius;
+  padding: $space-xs $space-md;
+  font-size: 14px;
+  font-family: inherit;
+  color: $color-text;
+  background-color: $color-surface;
+
+  &:focus {
+    outline: none;
+    border-color: $color-accent;
+  }
+}
+
+// ==========================================================================
+// وسوم الأدوية (تُستخدم بصفحة الوصفات وصفحة تفاصيل المريض)
+// ==========================================================================
+.medications-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-xs;
+}
+
+.medication-tag {
+  font-size: 12px;
+  font-weight: 600;
+  background-color: $color-bg;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+// ==========================================================================
+// اسم مريض قابل للنقر (أفاتار + اسم) — مستخدم بكل مكان بيظهر فيه اسم مريض
+// ==========================================================================
+.patient-name {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  width: fit-content;
+
+  h3 {
+    margin: 0;
+    transition: color 0.15s ease;
+  }
+
+  &:hover h3,
+  &:hover {
+    color: $color-accent;
+  }
+}

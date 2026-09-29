@@ -1,0 +1,81 @@
+@use '../../styles/variables' as *;
+@use '../../styles/shared' as *;
+
+.appointments-page__header {
+  @include page-header;
+}
+
+.appointments-page__count {
+  font-size: 13px;
+  color: $color-text-muted;
+}
+
+.appointments-filters {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  flex-wrap: wrap;
+  margin-bottom: $space-lg;
+}
+
+.day-group {
+  margin-bottom: $space-lg;
+
+  &__heading {
+    font-size: 14px;
+    font-weight: 700;
+    color: $color-text-muted;
+    margin-bottom: $space-sm;
+    padding-right: $space-xs;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $space-xs;
+  }
+}
+
+.appointment-row {
+  display: flex;
+  align-items: center;
+  gap: $space-md;
+  background-color: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius;
+  padding: $space-sm $space-md;
+  transition: box-shadow 0.15s ease;
+
+  &:hover {
+    box-shadow: $shadow-sm;
+  }
+
+  &__time {
+    font-weight: 700;
+    font-size: 14px;
+    width: 60px;
+    flex-shrink: 0;
+  }
+
+  &__patient {
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+    flex: 1;
+    font-weight: 600;
+    transition: color 0.15s ease;
+
+    &:hover {
+      color: $color-accent;
+    }
+
+    &--deleted {
+      color: $color-text-muted;
+      font-weight: 500;
+      font-style: italic;
+    }
+  }
+}
+
+
+

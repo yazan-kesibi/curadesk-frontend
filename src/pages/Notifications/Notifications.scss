@@ -1,0 +1,80 @@
+@use '../../styles/variables' as *;
+@use '../../styles/shared' as *;
+
+.notifications-page__header {
+  @include page-header;
+}
+
+.notifications-page__count {
+  font-size: 13px;
+  color: $color-text-muted;
+}
+
+
+
+.notifications-list {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+}
+
+.notification-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  background-color: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius;
+  padding: $space-sm $space-md;
+  padding-right: $space-lg;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+
+  &:hover {
+    background-color: $color-bg;
+  }
+
+  &--unread {
+    border-right: 3px solid $color-accent;
+    font-weight: 600;
+  }
+
+  &__message {
+    flex: 1;
+    font-size: 14px;
+  }
+
+  &__date {
+    font-size: 12px;
+    color: $color-text-muted;
+    white-space: nowrap;
+  }
+
+  &__delete {
+    color: $color-text-muted;
+    padding: 4px;
+    border-radius: 6px;
+
+    &:hover {
+      background-color: rgba($color-danger, 0.08);
+      color: $color-danger;
+    }
+  }
+}
+
+.unread-dot {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: $color-accent;
+}
+
+.notifications-page__actions {
+  @include page-header-actions;
+}
+

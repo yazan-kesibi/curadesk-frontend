@@ -1,0 +1,216 @@
+@use '../../styles/variables' as *;
+@use '../../styles/shared' as *;
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: $color-text-muted;
+  margin-bottom: $space-md;
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: $color-accent;
+  }
+}
+
+// ==========================================================================
+// رأس صفحة المريض
+// ==========================================================================
+.patient-detail-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: $space-md;
+  flex-wrap: wrap;
+  background-color: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius;
+  padding: $space-lg;
+  margin-bottom: $space-md;
+
+  &__main {
+    display: flex;
+    align-items: center;
+    gap: $space-md;
+
+    h1 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: $space-md;
+    flex-wrap: wrap;
+    color: $color-text-muted;
+    font-size: 13px;
+
+    span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: $space-sm;
+  }
+}
+
+.patient-detail-history {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-sm;
+  background-color: $color-accent-soft;
+  border-radius: $radius;
+  padding: $space-md;
+  margin-bottom: $space-lg;
+  font-size: 14px;
+  color: $color-text;
+
+  svg {
+    color: $color-accent;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+}
+
+// ==========================================================================
+// التابات
+// ==========================================================================
+.patient-detail-tabs {
+  display: flex;
+  gap: $space-xs;
+  border-bottom: 1px solid $color-border;
+  margin-bottom: $space-md;
+  overflow-x: auto;
+
+  button {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: $space-sm $space-md;
+    font-size: 14px;
+    font-weight: 600;
+    color: $color-text-muted;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: color 0.15s ease, border-color 0.15s ease;
+
+    &:hover {
+      color: $color-text;
+    }
+
+    &.active {
+      color: $color-accent;
+      border-bottom-color: $color-accent;
+    }
+  }
+
+  &__count {
+    background-color: $color-bg;
+    color: $color-text-muted;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 1px 7px;
+    border-radius: 999px;
+  }
+
+  .active &__count {
+    background-color: $color-accent-soft;
+    color: $color-accent;
+  }
+}
+
+// ==========================================================================
+// محتوى التابات
+// ==========================================================================
+.detail-list {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+}
+
+.detail-row {
+  display: flex;
+  align-items: center;
+  gap: $space-md;
+  background-color: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius;
+  padding: $space-sm $space-md;
+  font-size: 14px;
+  transition: box-shadow 0.15s ease;
+
+  &:hover {
+    box-shadow: $shadow-sm;
+  }
+
+  &__date {
+    flex: 1;
+    font-weight: 600;
+  }
+
+  &__amount {
+    font-weight: 700;
+  }
+
+  &__remaining {
+    font-weight: 500;
+    color: $color-warning;
+    font-size: 12px;
+  }
+}
+
+.detail-card {
+  background-color: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius;
+  padding: $space-md;
+
+  &__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $space-sm;
+    margin-bottom: 4px;
+
+    h4 {
+      font-size: 14px;
+      font-weight: 700;
+    }
+  }
+
+  &__date {
+    font-size: 12px;
+    color: $color-text-muted;
+    white-space: nowrap;
+  }
+
+  p {
+    font-size: 13px;
+    color: $color-text-muted;
+    margin-top: 4px;
+  }
+}
+
+@media (max-width: $bp-mobile) {
+  .patient-detail-header {
+    flex-direction: column;
+  }
+
+  .patient-detail-header__actions {
+    width: 100%;
+
+    button {
+      flex: 1;
+    }
+  }
+}

@@ -1,0 +1,90 @@
+@use 'variables' as *;
+
+// كل الفورمات (المريض، الموعد، الفاتورة، السجل الطبي، الوصفة) بتستخدم هاد
+// الصنف بدل ما تعرّف نفس تنسيق label/input/select/textarea من جديد بكل مرة.
+.form-field {
+  margin-bottom: $space-md;
+
+  label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: $space-xs;
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    border: 1px solid $color-border;
+    border-radius: $radius;
+    padding: $space-sm $space-md;
+    font-size: 14px;
+    font-family: inherit;
+    color: $color-text;
+    background-color: $color-surface;
+    transition: border-color 0.15s ease;
+
+    &:focus {
+      outline: none;
+      border-color: $color-accent;
+    }
+
+    &::placeholder {
+      color: $color-text-muted;
+    }
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  &__hint {
+    display: block;
+    font-size: 12px;
+    color: $color-text-muted;
+    margin-top: 4px;
+  }
+}
+
+// صف فيه أكتر من حقل جنب بعض (زي المبلغ الإجمالي/المدفوع بالفاتورة)
+.form-row {
+  display: flex;
+  gap: $space-sm;
+
+  .form-field {
+    flex: 1;
+    min-width: 0;
+  }
+
+  @media (max-width: $bp-mobile) {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+// زر الحفظ بأسفل كل فورم
+.form-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-xs;
+  width: 100%;
+  background-color: $color-accent;
+  color: white;
+  padding: $space-sm $space-md;
+  border-radius: $radius;
+  font-weight: 700;
+  font-size: 15px;
+  margin-top: $space-sm;
+  transition: opacity 0.15s ease;
+
+  &:hover:not(:disabled) {
+    opacity: 0.9;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}

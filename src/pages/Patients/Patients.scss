@@ -1,0 +1,129 @@
+@use '../../styles/variables' as *;
+@use '../../styles/shared' as *;
+
+.patients-page {
+  &__header {
+    @include page-header;
+    align-items: flex-start;
+  }
+
+  &__actions {
+    @include page-header-actions;
+  }
+
+  &__count {
+    font-size: 13px;
+    color: $color-text-muted;
+  }
+}
+
+// ==========================================================================
+// زر التبديل بين الجدول والبطاقات
+// ==========================================================================
+.view-toggle {
+  display: flex;
+  background-color: $color-bg;
+  border: 1px solid $color-border;
+  border-radius: $radius;
+  padding: 2px;
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 32px;
+    border-radius: calc(#{$radius} - 4px);
+    color: $color-text-muted;
+    transition: background-color 0.15s ease, color 0.15s ease;
+
+    &.active {
+      background-color: $color-surface;
+      color: $color-accent;
+      box-shadow: $shadow-sm;
+    }
+  }
+}
+
+// ==========================================================================
+// عرض الجدول
+// ==========================================================================
+.patients-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: $color-surface;
+  border-radius: $radius;
+  overflow: hidden;
+  border: 1px solid $color-border;
+
+  th,
+  td {
+    text-align: right;
+    padding: $space-sm $space-md;
+  }
+
+  thead {
+    background-color: $color-bg;
+
+    th {
+      font-size: 13px;
+      font-weight: 600;
+      color: $color-text-muted;
+    }
+  }
+
+  tbody tr {
+    border-top: 1px solid $color-border;
+    transition: background-color 0.15s ease;
+
+    &:hover {
+      background-color: $color-bg;
+    }
+  }
+}
+
+// ==========================================================================
+// عرض البطاقات
+// ==========================================================================
+.patients-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: $space-md;
+}
+
+.patient-card {
+  background-color: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius;
+  padding: $space-md;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+
+  &:hover {
+    box-shadow: $shadow-md;
+    transform: translateY(-2px);
+  }
+
+  h3 {
+    font-size: 16px;
+    margin-bottom: $space-xs;
+  }
+
+  p {
+    font-size: 14px;
+    color: $color-text-muted;
+    margin-top: 2px;
+  }
+
+  &__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: $space-xs;
+
+    h3 {
+      margin-bottom: 0;
+    }
+  }
+}
+
+

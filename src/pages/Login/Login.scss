@@ -1,0 +1,146 @@
+@use '../../styles/variables' as *;
+
+.login-page {
+  display: flex;
+  min-height: 100vh;
+
+  // ==========================================================================
+  // اللوحة اليمنى — الهوية البصرية
+  // ==========================================================================
+  &__brand {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(
+      135deg,
+      $color-accent,
+      color-mix(in srgb, $color-accent 85%, black)
+    );
+    padding: $space-xl;
+  }
+
+  &__brand-content {
+    max-width: 400px;
+    color: white;
+
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: $space-md;
+      line-height: 1.4;
+    }
+
+    p {
+      font-size: 15px;
+      opacity: 0.85;
+      line-height: 1.7;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: $space-xl * 1.5;
+  }
+
+  // ==========================================================================
+  // اللوحة اليسرى — الفورم
+  // ==========================================================================
+  &__form-side {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $color-bg;
+    padding: $space-xl;
+  }
+}
+
+.login-form {
+  width: 100%;
+  max-width: 360px;
+
+  h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: $space-xs;
+  }
+
+  &__subtitle {
+    color: $color-text-muted;
+    font-size: 14px;
+    margin-bottom: $space-xl;
+  }
+
+  &__field {
+    margin-bottom: $space-md;
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: $space-xs;
+    }
+  }
+
+  &__input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+    background-color: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius;
+    padding: $space-sm $space-md;
+    transition: border-color 0.15s ease;
+    color: $color-text-muted;
+
+    &:focus-within {
+      border-color: $color-accent;
+    }
+
+    input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 14px;
+      color: $color-text;
+      background: transparent;
+
+      &::placeholder {
+        color: $color-text-muted;
+        opacity: 0.6;
+      }
+    }
+  }
+
+  &__error {
+    color: $color-danger;
+    font-size: 13px;
+    margin-bottom: $space-md;
+  }
+
+  button {
+    width: 100%;
+    background-color: $color-accent;
+    color: white;
+    padding: $space-sm $space-md;
+    border-radius: $radius;
+    font-weight: 700;
+    font-size: 15px;
+    margin-top: $space-sm;
+    transition: opacity 0.15s ease;
+
+    &:hover:not(:disabled) {
+      opacity: 0.9;
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}

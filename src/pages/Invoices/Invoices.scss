@@ -1,0 +1,78 @@
+@use '../../styles/variables' as *;
+@use '../../styles/shared' as *;
+
+.invoices-page__header {
+  @include page-header;
+}
+
+.invoices-page__count {
+  font-size: 13px;
+  color: $color-text-muted;
+}
+
+.invoices-filters {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  flex-wrap: wrap;
+  margin-bottom: $space-lg;
+}
+
+.invoices-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: $space-md;
+}
+
+.invoice-card {
+  background-color: $color-surface;
+  border: 1px solid $color-border;
+  border-right: 4px solid $color-border;
+  border-radius: $radius;
+  padding: $space-md;
+
+  &--pending {
+    border-right-color: $color-warning;
+  }
+
+  &--partial {
+    border-right-color: $color-accent;
+  }
+
+  &--paid {
+    border-right-color: $color-success;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $space-sm;
+
+    h3 {
+      font-size: 16px;
+    }
+  }
+
+  &__amounts {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: $space-sm;
+
+    > div {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+.amount-label {
+  font-size: 11px;
+  color: $color-text-muted;
+}
+
+.amount-value {
+  font-size: 15px;
+  font-weight: 700;
+}
+

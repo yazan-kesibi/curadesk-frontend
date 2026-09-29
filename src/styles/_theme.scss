@@ -1,0 +1,47 @@
+// ==========================================================================
+// قيم الثيم الفعلية (CSS custom properties)
+// - الوضع الفاتح/الداكن بينضبط عبر [data-theme] على <html>
+// - لون التخصص بينضبط ديناميكياً من JS حسب إعدادات العيادة (--accent-color)
+// ==========================================================================
+
+:root {
+  --color-bg: #fafaf8;
+  --color-surface: #ffffff;
+  --color-text: #1c2321;
+  --color-text-muted: #6b7280;
+  --color-border: #e5e7eb;
+  --color-danger: #dc2626;
+  --color-success: #16a34a;
+  --color-warning: #d97706;
+
+  // لون افتراضي (طب عام) لحد ما تنجلب إعدادات العيادة الفعلية
+  --accent-color: #2563eb;
+  --accent-color-soft: color-mix(in srgb, var(--accent-color) 12%, transparent);
+}
+
+:root[data-theme='dark'] {
+  --color-bg: #12151a;
+  --color-surface: #1a1e24;
+  --color-text: #f3f4f6;
+  --color-text-muted: #9ca3af;
+  --color-border: #2b2f36;
+  --color-danger: #f87171;
+  --color-success: #4ade80;
+  --color-warning: #fbbf24;
+}
+
+// انتقال سلس عند تبديل الوضع الداكن/الفاتح أو لون التخصص
+html {
+  color-scheme: light;
+}
+
+html[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+body,
+.modal-box,
+.sidebar,
+.header {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}

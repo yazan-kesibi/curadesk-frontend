@@ -1,0 +1,47 @@
+@use '../../styles/variables' as *;
+@use '../../styles/shared' as *;
+
+.prescriptions-page__header {
+  @include page-header;
+}
+
+.prescriptions-page__count {
+  font-size: 13px;
+  color: $color-text-muted;
+}
+
+.prescriptions-page__actions {
+  @include page-header-actions;
+}
+
+.prescriptions-list {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+}
+
+.prescription-card {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  background-color: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius;
+  padding: $space-md;
+
+  &__main {
+    flex: 1;
+
+    h3 {
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+  }
+
+  &__diagnosis {
+    font-size: 13px;
+    color: $color-text-muted;
+    margin-bottom: $space-sm;
+  }
+}
+

@@ -1,0 +1,61 @@
+@use '../../styles/variables' as *;
+@use '../../styles/shared' as *;
+
+.medical-records-page__header {
+  @include page-header;
+}
+
+.medical-records-page__count {
+  font-size: 13px;
+  color: $color-text-muted;
+}
+
+.medical-records-page__actions {
+  @include page-header-actions;
+}
+
+.records-list {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+}
+
+.record-card {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  background-color: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius;
+  padding: $space-md;
+
+  &__main {
+    flex: 1;
+
+    h3 {
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+  }
+
+  &__diagnosis {
+    font-weight: 600;
+    color: $color-accent;
+    margin-bottom: 4px;
+  }
+
+  &__notes {
+    font-size: 14px;
+    color: $color-text-muted;
+    margin-bottom: $space-xs;
+  }
+
+  &__linked {
+    display: inline-block;
+    font-size: 12px;
+    color: $color-text-muted;
+    background-color: $color-bg;
+    padding: 2px 8px;
+    border-radius: 20px;
+  }
+}

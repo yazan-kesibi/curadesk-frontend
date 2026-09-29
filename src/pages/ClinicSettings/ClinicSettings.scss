@@ -1,0 +1,51 @@
+@use '../../styles/variables' as *;
+
+.clinic-settings-page {
+  max-width: 500px;
+
+  h1 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  &__subtitle {
+    font-size: 13px;
+    color: $color-text-muted;
+    margin-bottom: $space-lg;
+  }
+}
+
+.clinic-settings-form {
+  background-color: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius;
+  padding: $space-lg;
+
+  &__checkbox {
+    display: flex;
+    align-items: center;
+    gap: $space-xs;
+    margin-bottom: $space-lg;
+
+    input {
+      width: 16px;
+      height: 16px;
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: 600;
+    }
+  }
+
+  &__success {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: $color-success;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: $space-sm;
+  }
+}

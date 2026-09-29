@@ -1,0 +1,78 @@
+@use '../../styles/variables' as *;
+
+@keyframes modal-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modal-scale-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: $space-md;
+  animation: modal-fade-in 0.15s ease-out;
+}
+
+.modal-box {
+  background-color: $color-surface;
+  border-radius: $radius;
+  width: 100%;
+  max-width: 480px;
+  max-height: min(90vh, 720px);
+  overflow-y: auto;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+  animation: modal-scale-in 0.18s ease-out;
+
+  &--sm {
+    max-width: 380px;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $space-md $space-lg;
+    border-bottom: 1px solid $color-border;
+    position: sticky;
+    top: 0;
+    background-color: $color-surface;
+    border-radius: $radius $radius 0 0;
+
+    h2 {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    button {
+      display: flex;
+      color: $color-text-muted;
+      border-radius: 6px;
+      padding: 4px;
+      transition: background-color 0.15s ease, color 0.15s ease;
+
+      &:hover {
+        background-color: $color-bg;
+        color: $color-text;
+      }
+    }
+  }
+
+  &__content {
+    padding: $space-lg;
+  }
+}

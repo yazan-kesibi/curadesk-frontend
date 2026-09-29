@@ -1,0 +1,193 @@
+@use '../../styles/variables' as *;
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+// ==========================================================================
+// Sidebar
+// ==========================================================================
+.sidebar {
+  width: $sidebar-width;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  background-color: $color-surface;
+  border-left: 1px solid $color-border;
+  display: flex;
+  flex-direction: column;
+  padding: $space-lg $space-md;
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+    font-size: 18px;
+    font-weight: 700;
+    color: $color-text;
+    margin-bottom: $space-xl;
+    padding: 0 $space-sm;
+
+    svg {
+      color: $color-accent;
+      flex-shrink: 0;
+    }
+
+    span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  &__close {
+    display: none;
+    margin-right: auto;
+    color: $color-text-muted;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: $space-xs;
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+    padding: $space-sm $space-md;
+    border-radius: $radius;
+    color: $color-text-muted;
+    font-weight: 600;
+    transition: background-color 0.15s ease, color 0.15s ease;
+
+    svg {
+      flex-shrink: 0;
+    }
+
+    &:hover {
+      background-color: $color-bg;
+      color: $color-text;
+    }
+
+    &.active {
+      background-color: $color-accent;
+      color: white;
+    }
+  }
+
+  &__logout {
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+    padding: $space-sm $space-md;
+    border-radius: $radius;
+    color: $color-danger;
+    font-weight: 600;
+
+    &:hover {
+      background-color: color-mix(in srgb, $color-danger 8%, transparent);
+    }
+  }
+}
+
+.sidebar-backdrop {
+  display: none;
+}
+
+// ==========================================================================
+// المحتوى الرئيسي (Header + Outlet)
+// ==========================================================================
+.layout__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.header {
+  height: $header-height;
+  flex-shrink: 0;
+  border-bottom: 1px solid $color-border;
+  display: flex;
+  align-items: center;
+  gap: $space-md;
+  padding: 0 $space-lg;
+  background-color: $color-surface;
+
+  &__menu-btn {
+    display: none;
+    color: $color-text;
+  }
+
+  &__title {
+    font-size: 15px;
+    font-weight: 700;
+    flex: 1;
+  }
+
+  &__user {
+    font-size: 14px;
+    font-weight: 600;
+    color: $color-text-muted;
+    white-space: nowrap;
+  }
+}
+
+.layout__content {
+  flex: 1;
+  padding: $space-lg;
+  overflow-y: auto;
+}
+
+// ==========================================================================
+// الاستجابة للموبايل/التابلت: السايدبار يصير off-canvas
+// ==========================================================================
+@media (max-width: $bp-tablet) {
+  .header__menu-btn {
+    display: flex;
+  }
+
+  .sidebar__close {
+    display: flex;
+  }
+
+  .sidebar {
+    position: fixed;
+    inset-inline-start: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 60;
+    transform: translateX(100%);
+    transition: transform 0.2s ease;
+    box-shadow: $shadow-lg;
+
+    &--open {
+      transform: translateX(0);
+    }
+  }
+
+  .sidebar-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 50;
+  }
+
+  .layout__content {
+    padding: $space-md;
+  }
+}
+
+@media (max-width: $bp-mobile) {
+  .header__user {
+    display: none;
+  }
+}

@@ -1,0 +1,48 @@
+@use '../../styles/variables' as *;
+
+.medication-row {
+  display: flex;
+  gap: $space-xs;
+  margin-bottom: $space-xs;
+
+  input {
+    flex: 1;
+    border: 1px solid $color-border;
+    border-radius: $radius;
+    padding: $space-sm $space-md;
+    font-size: 14px;
+    font-family: inherit;
+    background-color: $color-surface;
+    color: $color-text;
+
+    &:focus {
+      outline: none;
+      border-color: $color-accent;
+    }
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    color: $color-danger;
+    border: 1px solid $color-border;
+    border-radius: $radius;
+    transition: background-color 0.15s ease;
+
+    &:hover {
+      background-color: color-mix(in srgb, $color-danger 8%, transparent);
+    }
+  }
+}
+
+.add-medication-btn {
+  display: flex;
+  align-items: center;
+  gap: $space-xs;
+  font-size: 13px;
+  font-weight: 600;
+  color: $color-accent;
+  margin-top: $space-xs;
+}

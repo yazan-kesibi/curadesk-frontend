@@ -1,0 +1,24 @@
+@use '../../styles/variables' as *;
+
+.auth-loading {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $color-bg;
+
+  &__spinner {
+    width: 36px;
+    height: 36px;
+    border: 3px solid $color-border;
+    border-top-color: $color-accent;
+    border-radius: 50%;
+    animation: auth-spin 0.7s linear infinite;
+  }
+}
+
+@keyframes auth-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

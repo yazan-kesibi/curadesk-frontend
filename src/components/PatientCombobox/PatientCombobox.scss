@@ -1,0 +1,140 @@
+@use '../../styles/variables' as *;
+
+.patient-combobox {
+  position: relative;
+
+  &__control {
+    display: flex;
+    align-items: center;
+    gap: $space-xs;
+    border: 1px solid $color-border;
+    border-radius: $radius;
+    padding: $space-sm $space-md;
+    background-color: $color-surface;
+    cursor: text;
+    color: $color-text-muted;
+    transition: border-color 0.15s ease;
+
+    input {
+      flex: 1;
+      min-width: 0;
+      border: none;
+      outline: none;
+      background: transparent;
+      font-size: 14px;
+      font-family: inherit;
+      color: $color-text;
+    }
+  }
+
+  &--open &__control {
+    border-color: $color-accent;
+  }
+
+  &__selected {
+    display: flex;
+    align-items: center;
+    gap: $space-xs;
+    flex: 1;
+    min-width: 0;
+    color: $color-text;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__placeholder {
+    flex: 1;
+    font-size: 14px;
+  }
+
+  &__clear {
+    display: flex;
+    color: $color-text-muted;
+    flex-shrink: 0;
+    padding: 2px;
+    border-radius: 4px;
+
+    &:hover {
+      background-color: $color-bg;
+      color: $color-danger;
+    }
+  }
+
+  &__chevron {
+    flex-shrink: 0;
+    color: $color-text-muted;
+    transition: transform 0.15s ease;
+  }
+
+  &--open &__chevron {
+    transform: rotate(180deg);
+  }
+
+  &__menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    left: 0;
+    z-index: 20;
+    background-color: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius;
+    box-shadow: $shadow-lg;
+    max-height: 260px;
+    overflow-y: auto;
+    padding: 4px;
+  }
+
+  &__empty {
+    padding: $space-md;
+    text-align: center;
+    font-size: 13px;
+    color: $color-text-muted;
+  }
+
+  &__option {
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+    width: 100%;
+    padding: $space-xs $space-sm;
+    border-radius: $radius-sm;
+    font-size: 14px;
+    text-align: right;
+    transition: background-color 0.1s ease;
+
+    &.highlighted {
+      background-color: $color-bg;
+    }
+
+    &.selected {
+      background-color: $color-accent-soft;
+    }
+
+    &-name {
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &-phone {
+      font-size: 12px;
+      color: $color-text-muted;
+      flex-shrink: 0;
+    }
+  }
+
+  &__validator {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    border: 0;
+    opacity: 0;
+  }
+}
